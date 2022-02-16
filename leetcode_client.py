@@ -2,7 +2,7 @@ import random
 import sqlite3 as sldb
 from typing import Any
 
-class DatabaseClient:
+class LeetcodeClient:
     
     def __init__(self) -> None:
         self.con = sldb.connect('questions.sqlite3')
@@ -47,5 +47,5 @@ class DatabaseClient:
         return self.format_question(question)
 
 if __name__ == "__main__":
-    client = DatabaseClient()
+    client = LeetcodeClient()
     print(client.get_random_question())

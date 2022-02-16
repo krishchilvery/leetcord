@@ -1,5 +1,3 @@
-from operator import ge
-from webbrowser import get
 import requests
 import json
 
