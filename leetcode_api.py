@@ -9,32 +9,30 @@ def get_leetcode_questions():
     questions = []
     current_index = 0
     LIMIT = 50
-    query = """
-query problemsetQuestionList($categorySlug: String, $limit: Int, $skip: Int, $filters: QuestionListFilterInput) {
-  problemsetQuestionList: questionList(
-    categorySlug: $categorySlug
-    limit: $limit
-    skip: $skip
-    filters: $filters
-  ) {
-    total: totalNum
-    questions: data {
-      acRate
-      difficulty
-      questionId
-      paidOnly: isPaidOnly
-      title
-      titleSlug
-      topicTags {
-        name
-        id
-        slug
-      }
-      hasSolution
-    }
-  }
-}
-"""
+    query = """query problemsetQuestionList($categorySlug: String, $limit: Int, $skip: Int, $filters: QuestionListFilterInput) {
+        problemsetQuestionList: questionList(
+            categorySlug: $categorySlug
+            limit: $limit
+            skip: $skip
+            filters: $filters
+        ) {
+            total: totalNum
+            questions: data {
+            acRate
+            difficulty
+            questionId
+            paidOnly: isPaidOnly
+            title
+            titleSlug
+            topicTags {
+                name
+                id
+                slug
+            }
+            hasSolution
+            }
+        }
+    }"""
     headers = {
         'Content-Type': 'application/json'
     }
