@@ -1,6 +1,5 @@
 import requests
 import json
-
 import sqlite3 as sldb
 
 url = "https://leetcode.com/graphql/"

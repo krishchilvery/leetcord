@@ -1,10 +1,12 @@
 import random
 import sqlite3 as sldb
 from typing import Any
+from leetcode_api import fetch_questions
 
 class LeetcodeClient:
     
     def __init__(self) -> None:
+        fetch_questions()
         self.con = sldb.connect('questions.sqlite3')
         self.cur = self.con.cursor()
         self.get_no_of_questions()
@@ -36,7 +38,7 @@ class LeetcodeClient:
         return random_question
     
     def get_questions_with_difficulty(self, dif) -> list:
-        query = f'SELECT * from questions where difficulty={dif}'
+        query = f'SELECT * from questions where difficulty="{dif}"'
         self.cur.execute(query)
         questions = self.cur.fetchall()
         return questions
@@ -45,6 +47,7 @@ class LeetcodeClient:
         questions = self.get_questions_with_difficulty(dif)
         question = random.choice(questions)
         return self.format_question(question)
+
 
 if __name__ == "__main__":
     client = LeetcodeClient()
